@@ -41,6 +41,17 @@ export default tseslint.config(
       reactHooks.configs['recommended-latest'],
       reactRefresh.configs.vite,
     ],
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: './tsconfig.json',
+        },
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+          paths: ['src'],
+        },
+      },
+    },
     languageOptions: {
       ecmaVersion: 2023,
       sourceType: 'module',
@@ -68,6 +79,7 @@ export default tseslint.config(
       'import/no-duplicates': 'error',
       'import/no-mutable-exports': 'error',
       'import/newline-after-import': ['warn', { count: 1 }],
+      'import/no-unresolved': 'off', // Disable for Vite's public directory imports
 
       /* Sorting (don’t use ESLint's built-in sort-imports to avoid conflicts) */
       'simple-import-sort/imports': [
@@ -75,7 +87,7 @@ export default tseslint.config(
         {
           groups: [
             ['^react$', '^react', '^next', '^[a-zA-Z]'], // pkgs
-            ['^@'], // @ alias
+            ['^@/'], // @ alias
             ['^~'], // ~ alias
             ['^src/'], // absolute project paths
             ['^\\.\\.(?!/?$)', '^\\.\\./?$'], // parent
