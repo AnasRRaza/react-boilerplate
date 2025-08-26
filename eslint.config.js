@@ -126,7 +126,11 @@ export default tseslint.config(
       '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
       '@typescript-eslint/no-unused-vars': [
         'warn',
-        { argsIgnorePattern: '^_', ignoreRestSiblings: true },
+        {
+          varsIgnorePattern: '^React$', // <- allow a top-level "React" variable
+          argsIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+        },
       ],
       '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }],
       '@typescript-eslint/no-non-null-assertion': 'warn',
