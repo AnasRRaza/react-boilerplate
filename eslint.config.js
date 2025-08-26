@@ -80,6 +80,7 @@ export default tseslint.config(
       'import/no-mutable-exports': 'error',
       'import/newline-after-import': ['warn', { count: 1 }],
       'import/no-unresolved': 'off', // Disable for Vite's public directory imports
+      'react-refresh/only-export-components': 'off',
 
       /* Sorting (don’t use ESLint's built-in sort-imports to avoid conflicts) */
       'simple-import-sort/imports': [
